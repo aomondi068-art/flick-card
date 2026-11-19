@@ -1,0 +1,121 @@
+/* Reset and center the card on the page */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #eef2f5;
+}
+
+/* 1. The main card container (sets the 3D perspective) */
+.flip-card {
+  background-color: transparent;
+  width: 340px;
+  height: 440px;
+  perspective: 1000px;
+}
+
+/* 2. Inner container that performs the 3D flip */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+}
+
+/* Flip the card when hovered */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* 3. Shared styles for both front and back faces */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari support */
+  backface-visibility: hidden;
+  border-radius: 16px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 4. Front side styling (KCB Dark Navy/Blue theme) */
+.flip-card-front {
+  background: linear-gradient(135deg, #002b49 0%, #004b7c 100%);
+  color: #ffffff;
+  border-top: 6px solid #84bd00; /* KCB Green accent */
+}
+
+.flip-card-front h1 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #84bd00;
+  margin-bottom: 20px;
+}
+
+.flip-card-front img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #84bd00;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.flip-card-front h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.flip-card-front p {
+  font-size: 1rem;
+  color: #d1e0ec;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* 5. Back side styling (KCB Signature Green theme) */
+.flip-card-back {
+  background: linear-gradient(135deg, #6fa000 0%, #84bd00 100%);
+  color: #ffffff;
+  transform: rotateY(180deg);
+  padding: 20px;
+}
+
+.flip-card-back h2 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  color: #002b49;
+}
+
+.flip-card-back p {
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: #002b49;
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+  word-wrap: break-word; /* Prevents the long number from overflowing */
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
